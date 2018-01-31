@@ -5,7 +5,7 @@ from urllib import parse
 class Finder(HTMLParser):
 
     def __init__(self, baseURL, pageURL):
-        super.__init__()
+        super().__init__()
         self.baseURL = baseURL
         self.pageURL = pageURL
         self.links = set()
