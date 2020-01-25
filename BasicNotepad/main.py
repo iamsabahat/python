@@ -7,8 +7,6 @@ from tkinter.filedialog import *
 import os    
 
 
-button.grid()
-
 
 class Notepad: 
 
@@ -22,7 +20,7 @@ class Notepad:
     __thisFileMenu = Menu(__thisMenuBar, tearoff=0) 
     __thisEditMenu = Menu(__thisMenuBar, tearoff=0) 
     __thisHelpMenu = Menu(__thisMenuBar, tearoff=0) 
-    __thisFontMenu = Menu(__thisMenubar,tearoff=0) # adding a new font menu bar
+    __thisFontMenu = Menu(__thisMenuBar, tearoff=0) # adding a new font menu bar
     # To add scrollbar 
     __thisScrollBar = Scrollbar(__thisTextArea)  
     __file = None
@@ -110,6 +108,14 @@ class Notepad:
         # To create a feature of description of the notepad 
         self.__thisHelpMenu.add_command(label="About Notepad", 
                                         command=self.__showAbout) 
+              
+                ###### 
+        self.__thisMenuBar.add_cascade(label="Font",menu=self.__thisFontMenu)
+        self.__thisFontMenu.add_command(label="Font Courier",
+                                        command = self.__FontCourier)
+
+        self.__thisFontMenu.add_command(label="Font Helvetica",
+                                        command = self.__FontHelvetica)       
         self.__thisMenuBar.add_cascade(label="Help", 
                                     menu=self.__thisHelpMenu) 
 
@@ -120,12 +126,7 @@ class Notepad:
         # Scrollbar will adjust automatically according to the content       
         self.__thisScrollBar.config(command=self.__thisTextArea.yview)   
         self.__thisTextArea.config(yscrollcommand=self.__thisScrollBar.set) 
-        ###### 
-        self.__thisFontMenu.add_command(label="Font Courier",
-                                        command = self.FontCourier)
 
-        self.__thisFontMenu.add_command(label="Font Helvetica",
-                                        command = self.FontHelvetica)
         #################################################################
         
     def __quitApplication(self): 
@@ -200,12 +201,12 @@ class Notepad:
     def __paste(self): 
         self.__thisTextArea.event_generate("<<Paste>>") 
 
-    def FontHelvetica(self):
+    def __FontHelvetica(self):
          self.__thisTextArea.config(font="Helvetica")
     
-    def FontCourier():
+    def __FontCourier():
         self.__thisTextArea.config(font="Courier")
-    '''
+    """
     font=Menubutton(root, text="Font") 
     font.grid() 
     font.menu=Menu(font, tearoff=0) 
@@ -215,10 +216,10 @@ class Notepad:
     times=IntVar() 
     Courier=IntVar()
     font.menu.add_checkbutton(label="Courier", variable=Courier, 
-                                command=FontCourier)
+                                command=__FontCourier)
     font.menu.add_checkbutton(label="Helvetica", variable=helvetica,
-                            command=FontHelvetica) 
-  '''
+                            command=__FontHelvetica) 
+  """
 
 
 
