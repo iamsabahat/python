@@ -204,7 +204,7 @@ class Notepad:
     def __FontHelvetica(self):
          self.__thisTextArea.config(font="Helvetica")
     
-    def __FontCourier():
+    def __FontCourier(self):
         self.__thisTextArea.config(font="Courier")
     """
     font=Menubutton(root, text="Font") 
